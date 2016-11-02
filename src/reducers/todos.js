@@ -1,6 +1,3 @@
-import { combineReducers } from 'redux';
-
-// individual todo reducer
 function todo(state, action) {
   switch (action.type) {
     case 'ADD_TODO':
@@ -23,7 +20,6 @@ function todo(state, action) {
   }
 }
 
-// todos array reducer
 function todos(state = [], action) {
   switch (action.type) {
     case 'ADD_TODO':
@@ -38,19 +34,4 @@ function todos(state = [], action) {
   }
 };
 
-// visibilityFilter reducer
-function visibilityFilter(state = 'SHOW_ALL', action) {
-  switch (action.type) {
-    case 'SET_VISIBILITY_FILTER':
-      return action.filter;
-    default:
-      return state;
-  }
-};
-
-const todoApp = combineReducers({
-  todos,
-  visibilityFilter
-})
-
-export default todoApp;
+export default todos;

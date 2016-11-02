@@ -1,6 +1,6 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { toggleTodo } from './actions';
+import { toggleTodo } from '../actions/';
+import TodoList from './TodoList.jsx'
 
 function mapStateToTodoListProps(state) {
   return {
@@ -20,31 +20,6 @@ const VisibleTodoList = connect(
 )(TodoList)
 
 export default VisibleTodoList;
-
-function TodoList({ todos, onTodoClick }) {
-  return (
-    <ul>
-      {todos.map(todo => 
-        <Todo key={todo.id}
-          {...todo}
-          onClick={() => onTodoClick(todo.id)}
-        />
-      )}
-    </ul>
-  )
-}
-
-function Todo({ onClick, completed, text }) {
-  return (
-    <li onClick={onClick}
-      style={{
-        textDecoration: completed ? 'line-through' : 'none'
-      }}
-    >
-      {text}
-    </li>
-  )
-}
 
 function getVisibleTodos(todos, filter) {
   switch (filter) {
