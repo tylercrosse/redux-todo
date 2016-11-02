@@ -3,7 +3,7 @@ import AddTodo         from './AddTodo.jsx';
 import VisibleTodoList from './VisibleTodoList.jsx';
 import Footer          from './Footer.jsx';
 
-export default function TodoApp({ store }) {
+export default function App({ store }) {
   return (
     <div>
       <AddTodo />
