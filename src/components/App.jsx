@@ -3,11 +3,11 @@ import AddTodo         from './AddTodo.jsx';
 import VisibleTodoList from './VisibleTodoList.jsx';
 import Footer          from './Footer.jsx';
 
-export default function App({ store }) {
+export default function App({ params }) {
   return (
     <div>
       <AddTodo />
-      <VisibleTodoList />
+        <VisibleTodoList filter={params.filter || 'all'} />
       <Footer />
     </div>
   )
