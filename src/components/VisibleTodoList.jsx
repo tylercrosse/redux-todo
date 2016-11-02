@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { toggleTodo } from '../actions/';
 import TodoList from './TodoList.jsx'
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state, { params }) {
   return {
-    todos: getVisibleTodos(state.todos, ownProps.filter)
+    todos: getVisibleTodos(state.todos, params.filter || 'all')
   }
 }
 function mapDispatchToProps(dispatch) {
@@ -14,10 +15,10 @@ function mapDispatchToProps(dispatch) {
     }
   }
 }
-const VisibleTodoList = connect(
+const VisibleTodoList = withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(TodoList)
+)(TodoList));
 
 export default VisibleTodoList;
 

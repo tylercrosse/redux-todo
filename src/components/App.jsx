@@ -7,7 +7,7 @@ export default function App({ params }) {
   return (
     <div>
       <AddTodo />
-        <VisibleTodoList filter={params.filter || 'all'} />
+        <VisibleTodoList />
       <Footer />
     </div>
   )
