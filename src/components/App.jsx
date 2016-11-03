@@ -7,7 +7,7 @@ export default function App({ params }) {
   return (
     <div>
       <AddTodo />
-        <VisibleTodoList />
+      <VisibleTodoList />
       <Footer />
     </div>
   )
