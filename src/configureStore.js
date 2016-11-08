@@ -1,23 +1,20 @@
-import { createStore } from 'redux';
-import throttle        from 'lodash/throttle'
-import todoApp                  from './reducers/'
-import { loadState, saveState } from './localStorage.js'
+import { createStore, applyMiddleware } from 'redux';
+import promise         from 'redux-promise';
+import createLogger    from 'redux-logger';
+import todoApp         from './reducers/'
 
 function configureStore() {
-  const persistedState = loadState()
-  const store = createStore(
+  const middlewares = [promise];
+  
+  if (process.env.NODE_ENV !== 'production') {
+    middlewares.push(createLogger())
+  }
+      
+  return createStore(
     todoApp,
-    persistedState,
+    applyMiddleware(...middlewares),
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
   );
-  
-  store.subscribe(throttle(() => {
-    saveState({
-      todos: store.getState().todos
-    })
-  }, 1000))
-  
-  return store
 }
   
 export default configureStore
